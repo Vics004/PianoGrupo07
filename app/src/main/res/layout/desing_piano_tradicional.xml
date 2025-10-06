@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pianotradicional"
+    android:orientation="horizontal"
+    tools:context=".PianoTradicional"
+    android:layout_marginStart="31dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginEnd="50dp">
+
+    <Button
+        android:id="@+id/btnDo"
+        android:layout_width="95dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayDo"/>
+
+    <Button
+        android:id="@+id/btnRe"
+        android:layout_width="94dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayRe"/>
+
+    <Button
+        android:id="@+id/btnMi"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayMi"/>
+
+    <Button
+        android:id="@+id/btnFa"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayFa"/>
+
+    <Button
+        android:id="@+id/btnSol"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlaySol"/>
+
+    <Button
+        android:id="@+id/btnLa"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayLa"/>
+
+    <Button
+        android:id="@+id/btnSi"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlaySi"/>
+
+</LinearLayout>
