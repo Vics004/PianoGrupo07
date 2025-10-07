@@ -10,7 +10,72 @@
     tools:context=".PianoSalvaje"
     android:layout_marginStart="31dp"
     android:layout_marginTop="30dp"
-    android:layout_marginEnd="50dp">
+    android:gravity="center"
+    android:layout_marginEnd="50dp"
+    android:weightSum="7"
+    >
+    <Button
+        android:id="@+id/btnElefante"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayElefante"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btnLeon"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayLeon"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btnAve"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayAve"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btnMono"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayMono"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btnRana"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayRana"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btnGrillo"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayGrillo"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btnJabali"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:background="@color/cardview_shadow_end_color"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="PlayJabali"
+        android:layout_weight="1"/>
+
 
 
 

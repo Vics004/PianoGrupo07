@@ -2,9 +2,11 @@ package sv.edu.catolica.pianogrupo07;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class PianoInstrumentos extends AppCompatActivity {
+
+    private MediaPlayer sonidoActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,5 +78,90 @@ public class PianoInstrumentos extends AppCompatActivity {
             builder.show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void PlayCampana(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.campana);
+        sonidoActual = sonido;
+        sonido.start();
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Campana", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayPiano(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.piano);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Piano", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayBateria(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.bateria);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Bateria", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayPandereta(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.pandereta);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Pandereta", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayTrombon(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.trombon);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Trombón", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayFlauta(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.flauta);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Flauta", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlaySaxofon(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.saxofon);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Saxofón", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

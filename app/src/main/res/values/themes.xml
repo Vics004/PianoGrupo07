@@ -1,10 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PianoGrupo07" parent="Theme.MaterialComponents.DayNight">
+    <style name="Theme.PianoGrupo07" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+
         <item name="colorOnPrimary">@color/white</item>
+
+
         <item name="android:actionMenuTextColor">@color/white</item>
         <item name="actionMenuTextColor">@color/white</item>
         <!-- Secondary brand color. -->

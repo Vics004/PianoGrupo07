@@ -2,9 +2,11 @@ package sv.edu.catolica.pianogrupo07;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class PianoSalvaje extends AppCompatActivity {
+    private MediaPlayer sonidoActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,5 +77,89 @@ public class PianoSalvaje extends AppCompatActivity {
             builder.show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void PlayElefante(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.elefante);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Elefante", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayLeon(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.leon);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "León", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayAve(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.ave);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Ave", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayMono(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.chimpance);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Mono - Chimpance", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayRana(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.rana);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Rana", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayGrillo(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.grillo);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Grillo", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void PlayJabali(View view) {
+        if (sonidoActual != null && sonidoActual.isPlaying()) {
+            sonidoActual.stop();
+        }
+
+        MediaPlayer sonido = MediaPlayer.create(this, R.raw.jabali);
+        sonidoActual = sonido;
+        sonido.start();
+        Toast toast = Toast.makeText(getApplicationContext(), "Jabalí", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

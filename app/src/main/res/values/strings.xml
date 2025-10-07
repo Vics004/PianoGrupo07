@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">PianoGrupo07</string>
-    <string name="victor_nombre">Víctor Manuel Palacios Martínez</string>
-    <string name="alejandra_nombre">María Alejandra Sandoval Gálvez</string>
+    <string name="victor_nombre">Víctor Manuel \nPalacios Martínez</string>
+    <string name="alejandra_nombre">María Alejandra \nSandoval Gálvez</string>
 </resources>
