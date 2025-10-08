@@ -2,4 +2,7 @@
     <string name="app_name">PianoGrupo07</string>
     <string name="victor_nombre">Víctor Manuel \nPalacios Martínez</string>
     <string name="alejandra_nombre">María Alejandra \nSandoval Gálvez</string>
+    <string name="ale_foto">ale_foto</string>
+    <string name="linear_layout_h">linear_layout_h</string>
+    <string name="victor_foto">victor_foto</string>
 </resources>

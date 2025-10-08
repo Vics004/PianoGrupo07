@@ -39,6 +39,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/linear_layout_h"
         android:orientation="horizontal">
 
         <ImageView
@@ -46,7 +47,7 @@
             android:layout_width="225dp"
             android:layout_height="180dp"
             android:layout_weight="1"
-            android:contentDescription="TODO"
+            android:contentDescription="@string/victor_foto"
             app:srcCompat="@drawable/perfilv" />
 
         <ImageView
@@ -54,6 +55,7 @@
             android:layout_width="250dp"
             android:layout_height="180dp"
             android:layout_weight="1"
+            android:contentDescription="@string/ale_foto"
             app:srcCompat="@drawable/perfila" />
     </LinearLayout>
 
