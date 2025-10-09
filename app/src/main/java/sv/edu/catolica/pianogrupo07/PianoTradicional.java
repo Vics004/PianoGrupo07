@@ -18,6 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class PianoTradicional extends AppCompatActivity {
+    private MediaPlayer[] sonidos;
+    private Toast toastActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,16 @@ public class PianoTradicional extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        sonidos = new MediaPlayer[]{
+                MediaPlayer.create(this, R.raw.dor),
+                MediaPlayer.create(this, R.raw.re),
+                MediaPlayer.create(this, R.raw.mi),
+                MediaPlayer.create(this, R.raw.fa),
+                MediaPlayer.create(this, R.raw.sol),
+                MediaPlayer.create(this, R.raw.la),
+                MediaPlayer.create(this, R.raw.si)
+        };
     }
 
     @Override
@@ -77,52 +89,34 @@ public class PianoTradicional extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void PlayDo(View view) {
-        MediaPlayer sonido = MediaPlayer.create(this, R.raw.dor);
+    private void reproducirSonido(int indice, String nombreNota) {
+
+        MediaPlayer sonido = sonidos[indice];
+
+        if (sonido.isPlaying()) {
+            sonido.seekTo(0); // reinicia si se toca rápido la misma nota
+        }
         sonido.start();
-        Toast toastDo = Toast.makeText(getApplicationContext(), "Do", Toast.LENGTH_SHORT);
-        toastDo.show();
+
+        mostrarToast(nombreNota);
+    }
+    private void mostrarToast(String mensaje) {
+        if (toastActual != null) toastActual.cancel();
+        toastActual = Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT);
+        toastActual.show();
     }
 
-    public void PlayRe(View view) {
-        MediaPlayer sonido = MediaPlayer.create(this, R.raw.re);
-        sonido.start();
-        Toast toastRe = Toast.makeText(getApplicationContext(), "Re", Toast.LENGTH_SHORT);
-        toastRe.show();
-    }
+    public void PlayDo(View view) {reproducirSonido(0, "Do");}
 
-    public void PlayMi(View view) {
-        MediaPlayer sonido = MediaPlayer.create(this, R.raw.mi);
-        sonido.start();
-        Toast toastMi = Toast.makeText(getApplicationContext(), "Mi", Toast.LENGTH_SHORT);
-        toastMi.show();
-    }
+    public void PlayRe(View view) {reproducirSonido(1, "Re");}
 
-    public void PlayFa(View view) {
-        MediaPlayer sonido = MediaPlayer.create(this, R.raw.fa);
-        sonido.start();
-        Toast toastFa = Toast.makeText(getApplicationContext(), "Fa", Toast.LENGTH_SHORT);
-        toastFa.show();
-    }
+    public void PlayMi(View view) {reproducirSonido(2, "Mi");}
 
-    public void PlaySol(View view) {
-        MediaPlayer sonido = MediaPlayer.create(this, R.raw.sol);
-        sonido.start();
-        Toast toastSol = Toast.makeText(getApplicationContext(), "Sol", Toast.LENGTH_SHORT);
-        toastSol.show();
-    }
+    public void PlayFa(View view) {reproducirSonido(3, "Fa");}
 
-    public void PlayLa(View view) {
-        MediaPlayer sonido = MediaPlayer.create(this, R.raw.la);
-        sonido.start();
-        Toast toastLa = Toast.makeText(getApplicationContext(), "La", Toast.LENGTH_SHORT);
-        toastLa.show();
-    }
+    public void PlaySol(View view) {reproducirSonido(4, "Sol");}
 
-    public void PlaySi(View view) {
-        MediaPlayer sonido = MediaPlayer.create(this, R.raw.si);
-        sonido.start();
-        Toast toastSi = Toast.makeText(getApplicationContext(), "Si", Toast.LENGTH_SHORT);
-        toastSi.show();
-    }
+    public void PlayLa(View view) {reproducirSonido(5, "La");}
+
+    public void PlaySi(View view) {reproducirSonido(6, "Si");}
 }
