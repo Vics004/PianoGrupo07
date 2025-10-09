@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Acerca_de extends AppCompatActivity {
+    private Toast toastActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,35 +40,28 @@ public class Acerca_de extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.acercade) {
             Intent ventana = new Intent(Acerca_de.this, Acerca_de.class);
-            Toast mensajito = Toast.makeText(getApplicationContext(), "Vista Acerca de...", Toast.LENGTH_SHORT);
-            mensajito.show();
             startActivity(ventana);
-            finish();
 
         }else if (item.getItemId() == R.id.salir) {
-            finish();
+            this.finishAffinity();
+
         } else if (item.getItemId() == R.id.cambio) {
-            final String[] pianos = {"Tradicional", "Infantil de la selva", "Instrumentos musicales"};
+            final String[] pianos = {getString(R.string.tradicional), getString(R.string.infantil_de_la_selva), getString(R.string.instrumentos_musicales)};
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Elija el piano que desee");
+            builder.setTitle(R.string.elija_piano);
             builder.setItems(pianos, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (pianos[which].equals("Tradicional")) {
+                    if (pianos[which].equals(getString(R.string.tradicional))) {
                         Intent ventana = new Intent(Acerca_de.this, PianoTradicional.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Infantil de la selva")) {
+                    } else if (pianos[which].equals(getString(R.string.infantil_de_la_selva))) {
                         Intent ventana = new Intent(Acerca_de.this, PianoSalvaje.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Instrumentos musicales")) {
+                    } else if (pianos[which].equals(getString(R.string.instrumentos_musicales))) {
                         Intent ventana = new Intent(Acerca_de.this, PianoInstrumentos.class);
                         startActivity(ventana);
-                        finish();
                     }
-                    Toast mensajito = Toast.makeText(getApplicationContext(), "Piano Seleccionado: " + pianos[which], Toast.LENGTH_SHORT);
-                    mensajito.show();
                 }
             });
             builder.create();
@@ -75,4 +69,5 @@ public class Acerca_de extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

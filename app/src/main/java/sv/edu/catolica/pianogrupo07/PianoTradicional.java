@@ -18,13 +18,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class PianoTradicional extends AppCompatActivity {
-    private MediaPlayer[] sonidos;
     private Toast toastActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.desing_piano_tradicional);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -32,15 +30,6 @@ public class PianoTradicional extends AppCompatActivity {
             return insets;
         });
 
-        sonidos = new MediaPlayer[]{
-                MediaPlayer.create(this, R.raw.dor),
-                MediaPlayer.create(this, R.raw.re),
-                MediaPlayer.create(this, R.raw.mi),
-                MediaPlayer.create(this, R.raw.fa),
-                MediaPlayer.create(this, R.raw.sol),
-                MediaPlayer.create(this, R.raw.la),
-                MediaPlayer.create(this, R.raw.si)
-        };
     }
 
     @Override
@@ -53,34 +42,28 @@ public class PianoTradicional extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.acercade) {
             Intent ventana = new Intent(PianoTradicional.this, Acerca_de.class);
-            Toast mensajito = Toast.makeText(getApplicationContext(), "Vista Acerca de...", Toast.LENGTH_SHORT);
-            mensajito.show();
             startActivity(ventana);
-            finish();
+
         }else if (item.getItemId() == R.id.salir) {
-            finish();
+            this.finishAffinity();
+
         } else if (item.getItemId() == R.id.cambio) {
-            final String[] pianos = {"Tradicional", "Infantil de la selva", "Instrumentos musicales"};
+            final String[] pianos = {getString(R.string.tradicional), getString(R.string.infantil_de_la_selva), getString(R.string.instrumentos_musicales)};
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Elija el piano que desee");
+            builder.setTitle(R.string.elija_piano);
             builder.setItems(pianos, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (pianos[which].equals("Tradicional")) {
+                    if (pianos[which].equals(getString(R.string.tradicional))) {
                         Intent ventana = new Intent(PianoTradicional.this, PianoTradicional.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Infantil de la selva")) {
+                    } else if (pianos[which].equals(getString(R.string.infantil_de_la_selva))) {
                         Intent ventana = new Intent(PianoTradicional.this, PianoSalvaje.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Instrumentos musicales")) {
+                    } else if (pianos[which].equals(getString(R.string.instrumentos_musicales))) {
                         Intent ventana = new Intent(PianoTradicional.this, PianoInstrumentos.class);
                         startActivity(ventana);
-                        finish();
                     }
-                    Toast mensajito = Toast.makeText(getApplicationContext(), "Piano Seleccionado: " + pianos[which], Toast.LENGTH_SHORT);
-                    mensajito.show();
                 }
             });
             builder.create();
@@ -89,34 +72,35 @@ public class PianoTradicional extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void reproducirSonido(int indice, String nombreNota) {
-
-        MediaPlayer sonido = sonidos[indice];
-
-        if (sonido.isPlaying()) {
-            sonido.seekTo(0); // reinicia si se toca rápido la misma nota
-        }
+    private void reproducirSonido(int indice, String nombreNota){
+        MediaPlayer sonido = MediaPlayer.create(this, indice);
+        sonido.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
         sonido.start();
-
         mostrarToast(nombreNota);
     }
+
     private void mostrarToast(String mensaje) {
         if (toastActual != null) toastActual.cancel();
         toastActual = Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT);
         toastActual.show();
     }
 
-    public void PlayDo(View view) {reproducirSonido(0, "Do");}
+    public void PlayDo(View view) {reproducirSonido(R.raw.dor, getString(R.string.dor));}
 
-    public void PlayRe(View view) {reproducirSonido(1, "Re");}
+    public void PlayRe(View view) {reproducirSonido(R.raw.re, getString(R.string.re));}
 
-    public void PlayMi(View view) {reproducirSonido(2, "Mi");}
+    public void PlayMi(View view) {reproducirSonido(R.raw.mi, getString(R.string.mi));}
 
-    public void PlayFa(View view) {reproducirSonido(3, "Fa");}
+    public void PlayFa(View view) {reproducirSonido(R.raw.fa, getString(R.string.fa));}
 
-    public void PlaySol(View view) {reproducirSonido(4, "Sol");}
+    public void PlaySol(View view) {reproducirSonido(R.raw.sol, getString(R.string.sol));}
 
-    public void PlayLa(View view) {reproducirSonido(5, "La");}
+    public void PlayLa(View view) {reproducirSonido(R.raw.la, getString(R.string.la));}
 
-    public void PlaySi(View view) {reproducirSonido(6, "Si");}
+    public void PlaySi(View view) {reproducirSonido(R.raw.si, getString(R.string.si));}
 }

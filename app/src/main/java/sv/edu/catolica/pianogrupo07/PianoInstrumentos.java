@@ -19,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class PianoInstrumentos extends AppCompatActivity {
 
+    private Toast toastActual;
     private MediaPlayer sonidoActual;
 
     @Override
@@ -43,35 +44,28 @@ public class PianoInstrumentos extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.acercade) {
             Intent ventana = new Intent(PianoInstrumentos.this, Acerca_de.class);
-            Toast mensajito = Toast.makeText(getApplicationContext(), "Vista Acerca de...", Toast.LENGTH_SHORT);
-            mensajito.show();
             startActivity(ventana);
-            finish();
 
         }else if (item.getItemId() == R.id.salir) {
-            finish();
+            this.finishAffinity();
+
         } else if (item.getItemId() == R.id.cambio) {
-            final String[] pianos = {"Tradicional", "Infantil de la selva", "Instrumentos musicales"};
+            final String[] pianos = {getString(R.string.tradicional), getString(R.string.infantil_de_la_selva), getString(R.string.instrumentos_musicales)};
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Elija el piano que desee");
+            builder.setTitle(R.string.elija_piano);
             builder.setItems(pianos, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (pianos[which].equals("Tradicional")) {
+                    if (pianos[which].equals(getString(R.string.tradicional))) {
                         Intent ventana = new Intent(PianoInstrumentos.this, PianoTradicional.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Infantil de la selva")) {
+                    } else if (pianos[which].equals(getString(R.string.infantil_de_la_selva))) {
                         Intent ventana = new Intent(PianoInstrumentos.this, PianoSalvaje.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Instrumentos musicales")) {
+                    } else if (pianos[which].equals(getString(R.string.instrumentos_musicales))) {
                         Intent ventana = new Intent(PianoInstrumentos.this, PianoInstrumentos.class);
                         startActivity(ventana);
-                        finish();
                     }
-                    Toast mensajito = Toast.makeText(getApplicationContext(), "Piano Seleccionado: " + pianos[which], Toast.LENGTH_SHORT);
-                    mensajito.show();
                 }
             });
             builder.create();
@@ -80,6 +74,11 @@ public class PianoInstrumentos extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void mostrarToast(String mensaje) {
+        if (toastActual != null) toastActual.cancel();
+        toastActual = Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT);
+        toastActual.show();
+    }
     public void PlayCampana(View view) {
         if (sonidoActual != null && sonidoActual.isPlaying()) {
             sonidoActual.stop();
@@ -89,8 +88,7 @@ public class PianoInstrumentos extends AppCompatActivity {
         sonidoActual = sonido;
         sonido.start();
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Campana", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.campana));
     }
 
     public void PlayPiano(View view) {
@@ -101,8 +99,7 @@ public class PianoInstrumentos extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.piano);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Piano", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.piano));
     }
 
     public void PlayBateria(View view) {
@@ -113,8 +110,7 @@ public class PianoInstrumentos extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.bateria);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Bateria", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.bater_a));
     }
 
     public void PlayPandereta(View view) {
@@ -125,8 +121,7 @@ public class PianoInstrumentos extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.pandereta);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Pandereta", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.pandereta));
     }
 
     public void PlayTrombon(View view) {
@@ -137,8 +132,7 @@ public class PianoInstrumentos extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.trombon);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Trombón", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.tromb_m));
     }
 
     public void PlayFlauta(View view) {
@@ -149,8 +143,7 @@ public class PianoInstrumentos extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.flauta);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Flauta", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.flauta));
     }
 
     public void PlaySaxofon(View view) {
@@ -161,7 +154,6 @@ public class PianoInstrumentos extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.saxofon);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Saxofón", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.saxof_n));
     }
 }

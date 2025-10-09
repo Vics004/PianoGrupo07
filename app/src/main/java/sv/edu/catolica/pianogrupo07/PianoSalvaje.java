@@ -20,6 +20,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class PianoSalvaje extends AppCompatActivity {
     private MediaPlayer sonidoActual;
 
+    private Toast toastActual;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,41 +44,41 @@ public class PianoSalvaje extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.acercade) {
             Intent ventana = new Intent(PianoSalvaje.this, Acerca_de.class);
-            Toast mensajito = Toast.makeText(getApplicationContext(), "Vista Acerca de...", Toast.LENGTH_SHORT);
-            mensajito.show();
             startActivity(ventana);
-            finish();
+
 
         }else if (item.getItemId() == R.id.salir) {
-            finish();
+            this.finishAffinity();
+
         } else if (item.getItemId() == R.id.cambio) {
-            final String[] pianos = {"Tradicional", "Infantil de la selva", "Instrumentos musicales"};
+            final String[] pianos = {getString(R.string.tradicional), getString(R.string.infantil_de_la_selva), getString(R.string.instrumentos_musicales)};
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Elija el piano que desee");
+            builder.setTitle(R.string.elija_piano);
             builder.setItems(pianos, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (pianos[which].equals("Tradicional")) {
+                    if (pianos[which].equals(getString(R.string.tradicional))) {
                         Intent ventana = new Intent(PianoSalvaje.this, PianoTradicional.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Infantil de la selva")) {
+                    } else if (pianos[which].equals(getString(R.string.infantil_de_la_selva))) {
                         Intent ventana = new Intent(PianoSalvaje.this, PianoSalvaje.class);
                         startActivity(ventana);
-                        finish();
-                    } else if (pianos[which].equals("Instrumentos musicales")) {
+                    } else if (pianos[which].equals(getString(R.string.instrumentos_musicales))) {
                         Intent ventana = new Intent(PianoSalvaje.this, PianoInstrumentos.class);
                         startActivity(ventana);
-                        finish();
                     }
-                    Toast mensajito = Toast.makeText(getApplicationContext(), "Piano Seleccionado: " + pianos[which], Toast.LENGTH_SHORT);
-                    mensajito.show();
                 }
             });
             builder.create();
             builder.show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void mostrarToast(String mensaje) {
+        if (toastActual != null) toastActual.cancel();
+        toastActual = Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT);
+        toastActual.show();
     }
 
     public void PlayElefante(View view) {
@@ -87,8 +89,7 @@ public class PianoSalvaje extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.elefante);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Elefante", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.elefante));
     }
 
     public void PlayLeon(View view) {
@@ -99,8 +100,7 @@ public class PianoSalvaje extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.leon);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "León", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.le_n));
     }
 
     public void PlayAve(View view) {
@@ -111,8 +111,7 @@ public class PianoSalvaje extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.ave);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Ave", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.ave));
     }
 
     public void PlayMono(View view) {
@@ -123,8 +122,7 @@ public class PianoSalvaje extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.chimpance);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Mono - Chimpance", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.mono));
     }
 
     public void PlayRana(View view) {
@@ -135,8 +133,7 @@ public class PianoSalvaje extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.rana);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Rana", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.rana));
     }
 
     public void PlayGrillo(View view) {
@@ -147,8 +144,7 @@ public class PianoSalvaje extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.grillo);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Grillo", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.grillo));
     }
 
     public void PlayJabali(View view) {
@@ -159,7 +155,6 @@ public class PianoSalvaje extends AppCompatActivity {
         MediaPlayer sonido = MediaPlayer.create(this, R.raw.jabali);
         sonidoActual = sonido;
         sonido.start();
-        Toast toast = Toast.makeText(getApplicationContext(), "Jabalí", Toast.LENGTH_SHORT);
-        toast.show();
+        mostrarToast(getString(R.string.jabal));
     }
 }
